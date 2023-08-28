@@ -3,6 +3,19 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: .5rem 1rem;
   background-color: var(--neutral-02);
+  color: var(--unifi-text-03);
+}
+
+.layoutHeader > .pageDetails > img {
+  margin-right: 2rem;
+}
+
+.layoutHeader > .pageDetails > h3 {
+  font-weight: 400;
+}
+
+.layoutHeader > .pageAuthor > h3 {
+  font-weight: 400;
 }

@@ -1,18 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
 @import './styles/layout.css';
 @import './styles/layoutHeader.css';
+@import './styles/table.css';
+@import './styles/inputs.css';
 
 :root {
   --gray-4: #BDBDBD;
   --neutral-02: #F4F5F6;
   --neutral-03: #EDEDF0;
+  --neutral-08: #838691;
+  --unifi-text-03: #808893;
+  --unifi-blue: #006FFF;
+  --unifi-text: #212327;
+  --main-font: 'Montserrat', sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 html {
   font-size: 12pt;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  font-family: var(--main-font);
+}
+
+main {
+  padding: 1.5rem 2.25rem;
 }

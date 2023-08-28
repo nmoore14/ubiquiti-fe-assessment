@@ -11,8 +11,10 @@ interface MainLayoutProps {
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <div>
-      <LayoutHeader />
-      {children || <Outlet />}
+      <LayoutHeader pageTitle='Devices' authorName='Nick Moore' />
+      <main>
+        {children || <Outlet />}
+      </main>
     </div>
   )
 };

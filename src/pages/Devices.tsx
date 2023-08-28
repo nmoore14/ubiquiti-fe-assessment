@@ -1,7 +1,8 @@
 import * as React from 'react'
+import DeviceTable from '../components/tables/DeviceTable'
 
 export default function Devices() {
   return (
-    <h1>Devices</h1>
+    <DeviceTable />
   )
 }
