@@ -1,0 +1,18 @@
+@import './styles/layout.css';
+@import './styles/layoutHeader.css';
+
+:root {
+  --gray-4: #BDBDBD;
+  --neutral-02: #F4F5F6;
+  --neutral-03: #EDEDF0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+html {
+  font-size: 12pt;
+}
