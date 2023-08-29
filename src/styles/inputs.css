@@ -1,5 +1,5 @@
 .searchInput {
-  padding: .5rem .75rem;
+  padding: .5rem .75rem .5rem 2rem;
   font-family: var(--main-font);
   font-size: 1.13rem;
   font-weight: 400;
@@ -8,10 +8,13 @@
   border-radius: .5rem;
   color: var(--gray-4);
   background-color: var(--neutral-02);
+  background-image: url('../assets/icons/search-icon.svg');
+  background-repeat: no-repeat;
+  background-position: left 10px center;
 }
 
 .searchInput:hover {
-  background-color: var(--neutral-08);
+  background-color: var(--neutral-03);
 }
 
 .searchInput:focus {
