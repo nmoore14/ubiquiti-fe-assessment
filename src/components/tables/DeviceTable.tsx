@@ -35,9 +35,10 @@ export default function DeviceTable() {
         <SearchBar />
         <span className='muted'> { Object.keys(devices).length } devices </span>
       </div>
-      <div className='actions'>
+      <div className='flex flex-row nowrap justify-center items-center actions'>
         <img src={ listView } alt='List view icon' />
         <img src={ gridView } alt='Grid view icon' />
+        <h3>Filter</h3>
       </div>
     </div>
   )
