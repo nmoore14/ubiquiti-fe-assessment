@@ -15,7 +15,7 @@ const Router: RouteObject[] = [
         element: <Devices />,
       },
       {
-        path: '/details',
+        path: '/details/:id',
         element: <DeviceDetails />,
       },
     ],

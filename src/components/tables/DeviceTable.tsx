@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
 
@@ -33,15 +34,13 @@ interface Device {
 
 interface IDevices extends Array<Device>{}
 
+
 export default function DeviceTable() {
+  const navigate = useNavigate()
   const [devices, setDevices] = React.useState<IDevices>([])
 
   const handleClick = () => {
     console.log('Button clicked')
-  }
-
-  const handleProductDetails = (device:Device) => {
-    console.log(device)
   }
 
   React.useEffect(() => {
@@ -53,9 +52,13 @@ export default function DeviceTable() {
       .catch((error) => console.log(error));
   }, []);
 
+  const handleProductDetails = (deviceId:number) => {
+    navigate(`/details/${deviceId}`)
+  }
+
   const deviceTableItems = devices.map((device, index) =>
     <tr key={ index }
-      onClick={() => handleProductDetails(device) }
+      onClick={() => handleProductDetails(index) }
     >
       <td className='iconCol'>
         <img src={ `https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[0][0]}x${device.icon.resolutions[0][1]}.png` } alt={ `Image of ${device.product.name}` } />
