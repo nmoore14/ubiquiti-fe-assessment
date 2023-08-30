@@ -1,33 +1,36 @@
 import * as React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { IDevices } from '../../types'
+import { RootState, useAppDispatch, fetchDevicesSuccess } from '../../store'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
 
 export default function DeviceTable() {
   const navigate = useNavigate()
-  const [devices, setDevices] = React.useState<IDevices>([])
 
-  const handleClick = () => {
-    console.log('Button clicked')
-  }
+  const dispatch = useAppDispatch();
+  const devices = useSelector((state: RootState) => state.devices.devices);
 
   React.useEffect(() => {
     fetch("https://static.ui.com/fingerprint/ui/public.json")
       .then((response) => response.json())
       .then((data) => {
-        setDevices(data.devices);
+        dispatch(fetchDevicesSuccess(data.devices));
       })
-      .catch((error) => console.log(error));
-  }, []);
+    .catch((error) => console.log(error));
+  }, [dispatch]);
 
-  const handleProductDetails = (deviceId:number) => {
+  const handleClick = () => {
+    console.log('Button clicked')
+  }
+
+  const handleProductDetails = (deviceId:string) => {
     navigate(`/details/${deviceId}`)
   }
 
   const deviceTableItems = devices.map((device, index) =>
     <tr key={ index }
-      onClick={() => handleProductDetails(index) }
+      onClick={() => handleProductDetails(device.id) }
     >
       <td className='iconCol'>
         <img src={ `https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[0][0]}x${device.icon.resolutions[0][1]}.png` } alt={ `Image of ${device.product.name}` } />
