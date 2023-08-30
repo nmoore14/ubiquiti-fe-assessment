@@ -5,10 +5,12 @@ import { IDevices } from './types'
 
 interface DeviceState {
   devices: IDevices
+  selectedDevice: string,
 }
 
 const initialState: DeviceState = {
   devices: [],
+  selectedDevice: '',
 }
 
 const deviceSlice = createSlice({
@@ -17,6 +19,9 @@ const deviceSlice = createSlice({
   reducers: {
     fetchDevicesSuccess(state, action:PayloadAction<IDevices>) {
       state.devices = action.payload
+    },
+    setSelectedDevice(state, action:PayloadAction<string>) {
+      state.selectedDevice = action.payload
     }
   },
 })
