@@ -1,39 +1,8 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { IDevices } from '../../types'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
-
-type Icon = {
-  id: string,
-  resolutions: string[],
-}
-
-type Line = {
-  name: string,
-  id: string,
-}
-
-type Product = {
-  abbrev: string,
-  name: string,
-}
-
-interface Device {
-  sysids: string[];
-  icon: Icon;
-  line: Line;
-  sysid: string;
-  guids: string[];
-  uisp: object;
-  btle: object;
-  id: string;
-  product: Product;
-  shortname: string[];
-  triplets: object[];
-}
-
-interface IDevices extends Array<Device>{}
-
 
 export default function DeviceTable() {
   const navigate = useNavigate()
