@@ -13,6 +13,8 @@
   --unifi-text-03: #808893;
   --unifi-blue: #006FFF;
   --unifi-text: #212327;
+  --unifi-text-01: rgba(0, 0, 0, .65);
+  --unifi-text-02: rgba(0, 0, 0, .45);
   --main-font: 'Montserrat', sans-serif;
 }
 

@@ -1,3 +1,49 @@
+table {
+  margin-top: 1rem;
+  font-family: var(--main-font);
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 2px solid var(--neutral-02);
+}
+
+td {
+  padding: .25rem .5rem;
+}
+
+thead > tr > th {
+  padding: .25rem .5rem;
+  text-align: left;
+}
+
+tbody > tr:hover {
+  cursor: pointer;
+  background-color: var(--neutral-03);
+}
+
+.iconCol {
+  width: 50px;
+}
+
+.lineCol {
+  width: 50%;
+}
+
+.lineColItem {
+  font-size: 1rem;
+  color: var(--unifi-text-01);
+}
+
+.productNameCol {
+  width: 50%;
+}
+
+.productNameColItem {
+  font-size: 1rem;
+  color: var(--unifi-text-02);
+}
+
 .tableActions {
   width: 100%;
   font-family: var(--main-font);
