@@ -76,6 +76,10 @@ export default function DeviceDetails() {
                   <td>Short Name</td>
                   <td>{ selectedDevice?.shortnames[0]}</td>
                 </tr>
+                <tr>
+                  <td>Max. Power</td>
+                  <td>{ selectedDevice?.shortnames[0]}</td>
+                </tr>
               </tbody>
             </table>
           </div>
