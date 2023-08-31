@@ -44,7 +44,16 @@ export default function DeviceDetails() {
           <NavButtons onClickButton1={ prevDevice } onClickButton2={ nextDevice } />
         </div>
       </div>
-      <div className='flex flex-row justify-center items-center details'>
+      <div className='flex flex-row justify-between items-center details'>
+        <div className='device'>
+          <div className='deviceImg'>
+            <img src={ `https://static.ui.com/fingerprint/ui/icons/${selectedDevice?.icon.id}_${selectedDevice?.icon.resolutions[4][0]}x${selectedDevice?.icon.resolutions[4][1]}.png` } alt={ `Image of ${selectedDevice?.product.name}` } />
+          </div>
+          <div className='deviceDetails'>
+            <h3>{ selectedDevice?.product.name }</h3>
+            <p>{ selectedDevice?.line.name }</p>
+          </div>
+        </div>
       </div>
     </div>
 

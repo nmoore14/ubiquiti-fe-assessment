@@ -2,3 +2,22 @@
   width: 100%;
   font-family: var(--main-font);
 }
+
+.details {
+  width: 30rem;
+}
+
+.device {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 1.25rem;
+  width: 100%;
+}
+
+.deviceImg {
+  border-radius: .5rem;
+  background-color: var(--neutral-02);
+}
