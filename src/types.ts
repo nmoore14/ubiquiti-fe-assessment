@@ -14,6 +14,10 @@ export type Product = {
   name: string,
 }
 
+export type DeviceParams = {
+  id: string,
+}
+
 /* Interfaces */
 export interface IDevice {
   sysids: string[];

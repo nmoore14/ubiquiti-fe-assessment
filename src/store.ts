@@ -26,7 +26,7 @@ const deviceSlice = createSlice({
   },
 })
 
-export const { fetchDevicesSuccess } = deviceSlice.actions
+export const { fetchDevicesSuccess, setSelectedDevice } = deviceSlice.actions
 
 export const selectDeviceById = (deviceId: string) => (state: RootState) =>
   state.devices.devices.find((device) => device.id === deviceId);

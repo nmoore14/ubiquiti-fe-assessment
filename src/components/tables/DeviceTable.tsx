@@ -1,24 +1,14 @@
 import * as React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { RootState, useAppDispatch, fetchDevicesSuccess } from '../../store'
+import { RootState } from '../../store'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
 
 export default function DeviceTable() {
   const navigate = useNavigate()
 
-  const dispatch = useAppDispatch();
   const devices = useSelector((state: RootState) => state.devices.devices);
-
-  React.useEffect(() => {
-    fetch("https://static.ui.com/fingerprint/ui/public.json")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(fetchDevicesSuccess(data.devices));
-      })
-    .catch((error) => console.log(error));
-  }, [dispatch]);
 
   const handleClick = () => {
     console.log('Button clicked')
@@ -49,7 +39,7 @@ export default function DeviceTable() {
         </div>
         <div className='flex flex-row nowrap justify-center items-center actions'>
           <ActionButtonGroup onClickButton1={ handleClick } onClickButton2={ handleClick } />
-          <button>Filter</button>
+          <button className='btn btnGhost'>Filter</button>
         </div>
       </div>
       <table>

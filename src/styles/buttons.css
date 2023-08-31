@@ -1,0 +1,27 @@
+.btn {
+  font-family: var(--main-font);
+  border-radius: .13rem;
+  border: none;
+  padding: .5rem .75rem;
+}
+
+.btnGhost {
+  color: var(--neutral-08);
+  background-color: var(--neutral-00);
+}
+
+/* Back Button */
+.backBtn {
+  color: var(--neutral-08);
+  background-color: var(--neutral-00);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.06);
+}
+
+.backBtn > img {
+  margin-right: .5rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--neutral-03);
+}

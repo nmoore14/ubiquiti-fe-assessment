@@ -4,9 +4,14 @@
 @import './styles/layoutHeader.css';
 @import './styles/table.css';
 @import './styles/inputs.css';
+@import './styles/buttons.css';
+
+/* Page specific CSS imports */
+@import './styles/pages/deviceDetails.css';
 
 :root {
   --gray-4: #BDBDBD;
+  --neutral-00: #FFFFFF;
   --neutral-02: #F4F5F6;
   --neutral-03: #EDEDF0;
   --neutral-08: #838691;
