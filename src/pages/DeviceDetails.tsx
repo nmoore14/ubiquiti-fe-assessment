@@ -52,6 +52,32 @@ export default function DeviceDetails() {
           <div className='deviceDetails'>
             <h3>{ selectedDevice?.product.name }</h3>
             <p>{ selectedDevice?.line.name }</p>
+            <table className='deviceInfo'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Product Line</td>
+                  <td>{ selectedDevice?.line.name }</td>
+                </tr>
+                <tr>
+                  <td>ID</td>
+                  <td>{ selectedDevice?.line.id }</td>
+                </tr>
+                <tr>
+                  <td>Name</td>
+                  <td>{ selectedDevice?.product.name }</td>
+                </tr>
+                <tr>
+                  <td>Short Name</td>
+                  <td>{ selectedDevice?.shortnames[0]}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

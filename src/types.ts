@@ -29,7 +29,7 @@ export interface IDevice {
   btle: object;
   id: string;
   product: Product;
-  shortname: string[];
+  shortnames: string[];
   triplets: object[];
 }
 
