@@ -2,8 +2,10 @@ import * as React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../store'
+import { getUniqueProductLine } from '../../utils'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
+import FilterDropdown from '../details/FilterDropdown'
 
 export default function DeviceTable() {
   const navigate = useNavigate()
@@ -17,6 +19,8 @@ export default function DeviceTable() {
   const handleProductDetails = (deviceId:string) => {
     navigate(`/details/${deviceId}`)
   }
+
+  const productLines = getUniqueProductLine(devices)
 
   const deviceTableItems = devices.map((device, index) =>
     <tr key={ index }
@@ -39,7 +43,7 @@ export default function DeviceTable() {
         </div>
         <div className='flex flex-row nowrap justify-center items-center actions'>
           <ActionButtonGroup onClickButton1={ handleClick } onClickButton2={ handleClick } />
-          <button className='btn btnGhost'>Filter</button>
+          <FilterDropdown items={ productLines } type='checkbox' onSelect={ handleClick } />
         </div>
       </div>
       <table>

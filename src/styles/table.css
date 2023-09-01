@@ -1,5 +1,5 @@
 table {
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-family: var(--main-font);
   border-collapse: collapse;
 }
@@ -9,12 +9,13 @@ tr {
 }
 
 td {
-  padding: .25rem .5rem;
+  padding: .5rem 1rem;
 }
 
 thead > tr > th {
-  padding: .25rem .5rem;
+  padding: .5rem 1rem;
   text-align: left;
+  font-size: 1.4rem;
 }
 
 tbody > tr:hover {
@@ -31,7 +32,7 @@ tbody > tr:hover {
 }
 
 .lineColItem {
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: var(--unifi-text-01);
 }
 
@@ -40,7 +41,7 @@ tbody > tr:hover {
 }
 
 .productNameColItem {
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: var(--unifi-text-02);
 }
 
@@ -51,7 +52,7 @@ tbody > tr:hover {
 
 .tableSearch > .muted {
   color: var(--gray-4);
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 400;
   margin-left: 1rem;
 }

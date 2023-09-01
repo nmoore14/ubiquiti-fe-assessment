@@ -5,6 +5,7 @@
 @import './styles/table.css';
 @import './styles/inputs.css';
 @import './styles/buttons.css';
+@import './styles/dropdowns.css';
 
 /* Page specific CSS imports */
 @import './styles/pages/deviceDetails.css';
@@ -31,7 +32,7 @@
 }
 
 html {
-  font-size: 12pt;
+  font-size: 10px;
 }
 
 h1,
