@@ -4,7 +4,7 @@
 }
 
 .details {
-  width: auto;
+  width: 40rem;
 }
 
 .device {
@@ -19,5 +19,11 @@
 
 .deviceImg {
   border-radius: .5rem;
-  background-color: var(--neutral-02);
+  background-color: var(--neutral-01);
+  width: 275px;
+  height: 275px;
+}
+
+.deviceDetailsDisplay {
+  flex-grow: 1;
 }

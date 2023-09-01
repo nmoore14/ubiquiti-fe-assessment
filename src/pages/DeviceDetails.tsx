@@ -49,7 +49,7 @@ export default function DeviceDetails() {
           <div className='deviceImg'>
             <img src={ `https://static.ui.com/fingerprint/ui/icons/${selectedDevice?.icon.id}_${selectedDevice?.icon.resolutions[4][0]}x${selectedDevice?.icon.resolutions[4][1]}.png` } alt={ `Image of ${selectedDevice?.product.name}` } />
           </div>
-          <div className='deviceDetails'>
+          <div className='deviceDetailsDisplay'>
             <h3>{ selectedDevice?.product.name }</h3>
             <p>{ selectedDevice?.line.name }</p>
             <table className='deviceInfo'>
