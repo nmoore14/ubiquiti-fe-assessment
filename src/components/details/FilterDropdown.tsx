@@ -14,10 +14,11 @@ function FilterDropdown<String>({ items, type, onSelect }: FilterDropdownProps<S
     setIsOpen(!isOpen);
   };
 
-  const handleItemClick = (item: String) => {
+  const handleItemSelect = (item: String) => {
     setSelectedItem(item);
     onSelect(item);
     setIsOpen(false);
+    console.log(item)
   };
 
   return (
@@ -38,7 +39,7 @@ function FilterDropdown<String>({ items, type, onSelect }: FilterDropdownProps<S
                   key={index}
                   className='flex flex-row nowrap justify-start items-center productLineItem'
                 >
-                  <input type='checkbox' value={item} />
+                  <input type='checkbox' value={item} onChange={ handleItemSelect }/>
                   <label>{item}</label>
                 </div>
               ))}
