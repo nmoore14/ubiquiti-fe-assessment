@@ -2,15 +2,18 @@ import * as React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../store'
-import { getUniqueProductLine } from '../../utils'
+import { IDevice } from '../../types'
+import { getUniqueProductLine, filterDevices } from '../../utils/DeviceFilters'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
 import FilterDropdown from '../details/FilterDropdown'
 
 export default function DeviceTable() {
+  const [deviceFilter, setDeviceFilter] = React.useState<string[]>([])
   const navigate = useNavigate()
 
   const devices = useSelector((state: RootState) => state.devices.devices);
+  let deviceDisplay:Array<IDevice> = []
 
   const handleClick = () => {
     console.log('Button clicked')
@@ -20,9 +23,27 @@ export default function DeviceTable() {
     navigate(`/details/${deviceId}`)
   }
 
+
+  const handleDeviceFilter = (item:string) => {
+    let filters:Array<string> = [...deviceFilter, item]
+    setDeviceFilter(filters)
+  }
+
+  const resetFilters = () => {
+    setDeviceFilter([])
+  }
+
   const productLines = getUniqueProductLine(devices)
 
-  const deviceTableItems = devices.map((device, index) =>
+  React.useEffect(() => {
+    if (deviceFilter.length) {
+      deviceDisplay = filterDevices(devices, deviceFilter)
+    } else {
+      deviceDisplay = devices
+    }
+  }, [deviceFilter])
+
+  const deviceTableItems = deviceDisplay.map((device, index) =>
     <tr key={ index }
       onClick={() => handleProductDetails(device.id) }
     >
@@ -39,11 +60,11 @@ export default function DeviceTable() {
       <div className='flex flex-row nowrap justify-between tableActions'>
         <div className='flex flex-row nowrap items-center tableSearch'>
           <SearchBar />
-          <span className='muted'> { Object.keys(devices).length } devices </span>
+          <span className='muted'> { Object.keys(deviceDisplay).length } devices </span>
         </div>
         <div className='flex flex-row nowrap justify-center items-center actions'>
           <ActionButtonGroup onClickButton1={ handleClick } onClickButton2={ handleClick } />
-          <FilterDropdown items={ productLines } type='checkbox' onSelect={ handleClick } />
+          <FilterDropdown items={ productLines } type='checkbox' onSelect={ handleDeviceFilter } onClickReset={ resetFilters } />
         </div>
       </div>
       <table>

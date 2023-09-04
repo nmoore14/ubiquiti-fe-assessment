@@ -3,23 +3,26 @@ import React, { useState } from 'react';
 interface FilterDropdownProps<T> {
   items: T[];
   type: 'checkbox' | 'dropdown' | 'select';
-  onSelect: (selectedItem: T) => void;
+  onSelect: (selectedItem: string) => void;
+  onClickReset: () => void;
 }
 
-function FilterDropdown<String>({ items, type, onSelect }: FilterDropdownProps<String>): JSX.Element {
+function FilterDropdown<String>({ items, type, onSelect, onClickReset }: FilterDropdownProps<String>): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<String | null>(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleItemSelect = (item: String) => {
-    setSelectedItem(item);
-    onSelect(item);
-    setIsOpen(false);
-    console.log(item)
-  };
+  const filterItems:any = items.map((item, index) => (
+    <div
+      key={index}
+      className='flex flex-row nowrap justify-start items-center productLineItem'
+    >
+      <input type='checkbox' value={item} onChange={ () => onSelect(item) }/>
+      <label>{item}</label>
+    </div>
+  ))
 
   return (
     <div className="productLineDropdown">
@@ -32,23 +35,14 @@ function FilterDropdown<String>({ items, type, onSelect }: FilterDropdownProps<S
       {isOpen && (
         <div className='dropdown'>
           <h3>Product Line</h3>
-          {type === 'checkbox' && (
-            <>
-              {items.map((item:String, index) => (
-                <div
-                  key={index}
-                  className='flex flex-row nowrap justify-start items-center productLineItem'
-                >
-                  <input type='checkbox' value={item} onChange={ handleItemSelect }/>
-                  <label>{item}</label>
-                </div>
-              ))}
-            </>
-          )}
+          {type === 'checkbox' && filterItems}
+          <button
+            className='btn btnGhost btnWarning'
+            onClick={ onClickReset }
+          >
+            Reset
+          </button>
         </div>
-      )}
-      {selectedItem && (
-        <p>Selected: {selectedItem.toString()}</p>
       )}
     </div>
   );

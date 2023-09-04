@@ -17,6 +17,10 @@
   background-color: var(--neutral-00);
 }
 
+.btnWarning {
+  color: red;
+}
+
 .btnActive {
   color: var(--unifi-blue);
 }

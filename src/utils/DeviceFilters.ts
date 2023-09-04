@@ -1,6 +1,6 @@
 import { IDevice, IDevices } from "../types"
 
-function getUniqueProductLine<String>(array: IDevices): IDevice[keyof IDevice][] {
+export function getUniqueProductLine(array: IDevices): IDevice[keyof IDevice][] {
   const uniqueValues: Set<IDevice[keyof IDevice]> = new Set();
 
   for (const item of array) {
@@ -10,4 +10,11 @@ function getUniqueProductLine<String>(array: IDevices): IDevice[keyof IDevice][]
   return Array.from(uniqueValues);
 }
 
-export default getUniqueProductLine
+export function filterDevices(devices: IDevice[], filters: Array<String>): IDevice[] {
+  const filteredDevices = devices.filter((device:IDevice) => {
+    return filters.includes(device.line.name)
+  })
+
+  return filteredDevices
+}
+
