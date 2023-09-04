@@ -10,10 +10,10 @@ import FilterDropdown from '../details/FilterDropdown'
 
 export default function DeviceTable() {
   const [deviceFilter, setDeviceFilter] = React.useState<string[]>([])
+  const [deviceDisplay, setDeviceDisplay] = React.useState<IDevice[]>([])
   const navigate = useNavigate()
 
   const devices = useSelector((state: RootState) => state.devices.devices);
-  let deviceDisplay:Array<IDevice> = []
 
   const handleClick = () => {
     console.log('Button clicked')
@@ -37,11 +37,12 @@ export default function DeviceTable() {
 
   React.useEffect(() => {
     if (deviceFilter.length) {
-      deviceDisplay = filterDevices(devices, deviceFilter)
+      const filteredDevices = filterDevices(devices, deviceFilter)
+      setDeviceDisplay(filteredDevices)
     } else {
-      deviceDisplay = devices
+      setDeviceDisplay(devices)
     }
-  }, [deviceFilter])
+  }, [deviceFilter, devices])
 
   const deviceTableItems = deviceDisplay.map((device, index) =>
     <tr key={ index }
