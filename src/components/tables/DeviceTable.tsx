@@ -25,8 +25,15 @@ export default function DeviceTable() {
 
 
   const handleDeviceFilter = (item:string) => {
-    let filters:Array<string> = [...deviceFilter, item]
-    setDeviceFilter(filters)
+    const itemIndex:number = deviceFilter.indexOf(item)
+    let filters:Array<string> = [...deviceFilter]
+    if (itemIndex < 0) {
+      filters = [...deviceFilter, item]
+      setDeviceFilter(filters)
+    } else {
+      filters.splice(itemIndex, 1)
+      setDeviceFilter(filters)
+    }
   }
 
   const resetFilters = () => {
