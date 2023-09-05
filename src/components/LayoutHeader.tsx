@@ -8,7 +8,7 @@ interface LayoutHeaderProps {
 
 const LayoutHeader: React.FC<LayoutHeaderProps> = ({ pageTitle, authorName }) => {
   return (
-    <div className="layoutHeader">
+    <div className="fixed layoutHeader">
       <div className="flex flex-row nowrap justify-center items-center pageDetails">
         <img src={ ubiDefaultIcon } alt='Ubiquiti Defualt Icon'/>
         <h3>{ pageTitle }</h3>

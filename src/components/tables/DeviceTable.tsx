@@ -66,7 +66,7 @@ export default function DeviceTable() {
 
   return (
     <div className='flex flex-col nowrap devices'>
-      <div className='flex flex-row nowrap justify-between tableActions'>
+      <div className='fixed flex flex-row nowrap justify-between tableActions'>
         <div className='flex flex-row nowrap items-center tableSearch'>
           <SearchBar searchItems={ searchItems } searchSelect={ handleProductDetails }/>
           <span className='muted'> { Object.keys(deviceDisplay).length } devices </span>
@@ -76,18 +76,20 @@ export default function DeviceTable() {
           <FilterDropdown items={ productLines } type='checkbox' onSelect={ handleDeviceFilter } onClickReset={ resetFilters } />
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th className='iconCol'></th>
-            <th className='lineCol'>Product Line</th>
-            <th className='productNameCol'>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          { deviceTableItems }
-        </tbody>
-      </table>
+      <div className='devicesTable'>
+        <table>
+          <thead>
+            <tr>
+              <th className='iconCol'></th>
+              <th className='lineCol'>Product Line</th>
+              <th className='productNameCol'>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            { deviceTableItems }
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
