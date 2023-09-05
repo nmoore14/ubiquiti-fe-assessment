@@ -1,5 +1,6 @@
 .searchInput {
   padding: 1rem 1.2rem 1rem 3rem;
+  margin-bottom: .5rem;
   font-family: var(--main-font);
   font-size: 1.4rem;
   font-weight: 400;

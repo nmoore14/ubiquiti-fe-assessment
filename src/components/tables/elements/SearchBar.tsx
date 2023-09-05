@@ -1,27 +1,18 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
+import { ISearchItem } from '../../../types';
 
-interface SearchResult {
-  id: number;
-  name: string;
-  // Add other properties as needed
+interface SearchBarProps {
+  searchItems: ISearchItem[]; // Define the prop for custom search items
+  searchSelect: (deviceId:string) => void;
 }
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<SearchBarProps> = ({ searchItems, searchSelect }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchResults, setSearchResults] = useState<ISearchItem[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
-  // Simulated data for search results (replace with your data fetching logic)
-  const allSearchResults: SearchResult[] = [
-    { id: 1, name: 'Apple' },
-    { id: 2, name: 'Banana' },
-    { id: 3, name: 'Cherry' },
-    // Add more results
-  ];
-
   useEffect(() => {
-    // Simulated API call or data filtering logic
-    const filteredResults = allSearchResults.filter((result) =>
+    const filteredResults = searchItems.filter((result) =>
       result.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -33,10 +24,14 @@ const SearchBar: React.FC = () => {
     setShowDropdown(true);
   };
 
-  const handleItemClick = (result: SearchResult) => {
-    setSearchTerm(result.name);
-    setShowDropdown(false);
-  };
+  const hideResults = () => {
+    setShowDropdown(false)
+  }
+
+  const handleItemClick = (result: ISearchItem) => {
+    setShowDropdown(false)
+    searchSelect(result.id)
+  }
 
   const renderBoldText = (text: string) => {
     const index = text.toLowerCase().indexOf(searchTerm.toLowerCase());
@@ -62,17 +57,28 @@ const SearchBar: React.FC = () => {
         placeholder="Search..."
         className='searchInput'
         value={searchTerm}
-        onChange={handleInputChange}
+        onChange={ handleInputChange }
+        onBlur={ hideResults }
       />
       {showDropdown && (
         <ul className="searchDropdown searchTermsList">
-          {searchResults.map((result) => (
+          { searchResults.length < 1 &&
             <li
-              className='searchTerm'
-              key={result.id}
-              onClick={() => handleItemClick(result)}
+              className='flex flex-row justify-between items-center searchTermDisabled'
             >
-              {renderBoldText(result.name)}
+              No Results...
+            </li>
+          }
+          {searchResults.length >= 1 && searchResults.map((result) => (
+            <li
+              className='flex flex-row justify-between items-center searchTerm'
+              key={result.id}
+              onMouseDown={ () => handleItemClick(result) }
+            >
+                { renderBoldText(result.name) }
+              <span className='searchTermShortName'>
+                { result.shortName }
+              </span>
             </li>
           ))}
         </ul>

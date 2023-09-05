@@ -2,8 +2,8 @@ import * as React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../store'
-import { IDevice } from '../../types'
-import { getUniqueProductLine, filterDevices } from '../../utils/DeviceFilters'
+import { IDevice, ISearchItem } from '../../types'
+import { getUniqueProductLine, filterDevices, getProductNameList } from '../../utils/DeviceFilters'
 import SearchBar from './elements/SearchBar'
 import ActionButtonGroup from './elements/ActionButtonGroup'
 import FilterDropdown from '../details/FilterDropdown'
@@ -41,6 +41,7 @@ export default function DeviceTable() {
   }
 
   const productLines = getUniqueProductLine(devices)
+  const searchItems:ISearchItem[] = getProductNameList(devices)
 
   React.useEffect(() => {
     if (deviceFilter.length) {
@@ -67,7 +68,7 @@ export default function DeviceTable() {
     <div className='flex flex-col nowrap devices'>
       <div className='flex flex-row nowrap justify-between tableActions'>
         <div className='flex flex-row nowrap items-center tableSearch'>
-          <SearchBar />
+          <SearchBar searchItems={ searchItems } searchSelect={ handleProductDetails }/>
           <span className='muted'> { Object.keys(deviceDisplay).length } devices </span>
         </div>
         <div className='flex flex-row nowrap justify-center items-center actions'>

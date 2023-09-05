@@ -33,4 +33,11 @@ export interface IDevice {
   triplets: object[];
 }
 
+export interface ISearchItem {
+  id: string;
+  name: string;
+  shortName: string;
+  productIndex: number;
+}
+
 export interface IDevices extends Array<IDevice>{}

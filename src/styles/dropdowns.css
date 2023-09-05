@@ -35,14 +35,25 @@
   list-style-type: none;
 }
 
-.searchTerm {
+.searchTerm,
+.searchTermDisabled
+{
   font-size: 1.4rem;
   color: var(--neutral-08);
   padding: .5rem .75rem;
+}
+
+.searchTermShortName {
+  text-align: right;
 }
 
 .searchMatch {
   font-weight: bold;
   text-decoration: underline;
   color: var(--unifi-text);
+}
+
+.searchTerm:hover {
+  cursor: pointer;
+  background-color: var(--neutral-02);
 }
