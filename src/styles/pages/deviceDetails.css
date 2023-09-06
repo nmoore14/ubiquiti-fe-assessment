@@ -13,7 +13,8 @@
 }
 
 .details {
-  width: 60rem;
+  min-width: 60rem;
+  max-width: 80rem;
 }
 
 .device {
@@ -31,6 +32,11 @@
   background-color: var(--neutral-01);
   width: 275px;
   height: 275px;
+}
+
+.deviceDetailsImg img {
+  height: 25.7rem;
+  width: auto;
 }
 
 .deviceDetailsDisplay {

@@ -1,4 +1,29 @@
 /* Types */
+export type Radio = {
+  gain: number,
+  maxPower: number,
+  maxSpeedMegabitsPerSecond: number,
+}
+
+export type Unifi = {
+  adoptability: string,
+  network: {
+    radios: Radio[],
+  },
+  numberOfPorts: number,
+  ethernetMaxSpeedMegabitsPerSecond: number,
+  systemIdHexadecimal: string,
+  features: {
+    bandsteer: boolean,
+    ac: boolean,
+    gen: number
+  },
+  chipset: string,
+  type: string,
+  minimumFirmwareRequired: string,
+  deviceCapabilities: string[],
+}
+
 export type Icon = {
   id: string,
   resolutions: string[],
@@ -21,6 +46,7 @@ export type DeviceParams = {
 /* Interfaces */
 export interface IDevice {
   sysids: string[];
+  unifi: Unifi;
   icon: Icon;
   line: Line;
   sysid: string;

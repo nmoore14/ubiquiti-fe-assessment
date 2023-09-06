@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { DeviceParams, Icon, Radio } from '../types'
+import { DeviceParams, Radio } from '../types'
 import {
   RootState,
   useAppDispatch,
@@ -56,44 +56,22 @@ export default function DeviceDetails() {
     setShowJson(!showJson)
   }
 
-  const getLargestIcon = (icon:Icon) => {
-    const resolutionsLast:number = icon.resolutions.length - 1
-
-    return (
-      <img src={ `https://static.ui.com/fingerprint/ui/icons/${selectedDevice?.icon.id}_${selectedDevice?.icon.resolutions[resolutionsLast][0]}x${selectedDevice?.icon.resolutions[resolutionsLast][1]}.png` } alt={ `Image of ${selectedDevice?.product.name}` } />
-    )
-  }
-
-  const getKeyValue = (radios:Radio[], key:string) => {
-    for (const radio in radios) {
-      for (const item in radios[radio]) {
-        if (item === key) {
-          return radios[radio][item]
-        }
-      }
-    }
-  }
-
   const buildRadioEntry = (radios:Radio[], key:string) => {
     let keyDisplay:string = ''
-    let value = ''
     switch (key) {
-      case 'maxPower': {
+      case 'maxPower':
         keyDisplay = 'Max Power'
-        value = `${getKeyValue(radios, 'maxPower')} W`
-        break
-      }
-      case 'maxSpeedMegabitsPerSecond': {
+        return
+      case 'maxSpeedMegabitsPerSecond':
         keyDisplay = 'Speed'
-        value = `${getKeyValue(radios, 'maxSpeedMegabitsPerSecond')} Mbps`
-        break
-      }
-      default: {
+        return
+      default:
         keyDisplay = 'n/a'
-        break
-      }
     }
-    return ( <tr><td>{ keyDisplay }</td><td className='deviceDetail'>{ value }</td></tr> )
+
+    console.log(radios)
+    console.log(key)
+    return `<td>${ keyDisplay }</td><td className='deviceDetail'>Test</td>`
   }
 
   return (
@@ -114,12 +92,12 @@ export default function DeviceDetails() {
       </div>
       <div className='flex flex-row justify-between items-center details'>
         <div className='device'>
-          <div className='flex flex-col nowrap justify-center items-center deviceDetailsImg'>
-            { getLargestIcon(selectedDevice!.icon) }
+          <div className='deviceDetailsImg'>
+            <img src={ `https://static.ui.com/fingerprint/ui/icons/${selectedDevice?.icon.id}_${selectedDevice?.icon.resolutions[4][0]}x${selectedDevice?.icon.resolutions[4][1]}.png` } alt={ `Image of ${selectedDevice?.product.name}` } />
           </div>
           <div className='deviceDetailsDisplay'>
-            <h3>{ selectedDevice!.product.name }</h3>
-            <p>{ selectedDevice!.line.name }</p>
+            <h3>{ selectedDevice?.product.name }</h3>
+            <p>{ selectedDevice?.line.name }</p>
             <table className='deviceDetailsInfo'>
               <thead>
                 <tr>
@@ -130,23 +108,23 @@ export default function DeviceDetails() {
               <tbody>
                 <tr>
                   <td>Product Line</td>
-                  <td className='deviceDetail'>{ selectedDevice!.line.name }</td>
+                  <td className='deviceDetail'>{ selectedDevice?.line.name }</td>
                 </tr>
                 <tr>
                   <td>ID</td>
-                  <td className='deviceDetail'>{ selectedDevice!.line.id }</td>
+                  <td className='deviceDetail'>{ selectedDevice?.line.id }</td>
                 </tr>
                 <tr>
                   <td>Name</td>
-                  <td className='deviceDetail'>{ selectedDevice!.product.name }</td>
+                  <td className='deviceDetail'>{ selectedDevice?.product.name }</td>
                 </tr>
                 <tr>
                   <td>Short Name</td>
-                  <td className='deviceDetail'>{ selectedDevice!.shortnames[0]}</td>
+                  <td className='deviceDetail'>{ selectedDevice?.shortnames[0]}</td>
                 </tr>
-                { selectedDevice?.unifi.hasOwnProperty('network') && buildRadioEntry(selectedDevice.unifi.network.radios, 'maxPower') }
-                { selectedDevice?.unifi.hasOwnProperty('network') && buildRadioEntry(selectedDevice.unifi.network.radios, 'maxSpeedMegabitsPerSecond') }
-                { selectedDevice?.unifi.hasOwnProperty('numberOfPorts') && <tr>
+                { selectedDevice.unifi && buildRadioEntry(selectedDevice.unifi.network.radios, 'maxPower') }
+                { selectedDevice.unifi && buildRadioEntry(selectedDevice.unifi.network.radios, 'maxSpeedMegabitsPerSecond') }
+                { selectedDevice.unifi && <tr>
                   <td>Number of Ports</td>
                   <td className='deviceDetail'>{ selectedDevice?.unifi.numberOfPorts }</td>
                 </tr>
