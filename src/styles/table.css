@@ -86,3 +86,20 @@ tbody > tr:active {
   font-size: 1.4rem;
   color: var(--unifi-text-02);
 }
+
+.deviceDetailsInfo {
+  font-family: var(--main-font);
+  background-color: var(--neutral-00);
+  border-collapse: collapse;
+}
+
+.deviceDetailsInfo tr {
+  border: none;
+  font-size: 1.4rem;
+  color: var(--unifi-text-01);
+}
+
+.deviceDetail {
+  text-align: right;
+  color: var(--unifi-text-02);
+}

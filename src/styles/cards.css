@@ -40,6 +40,12 @@
   z-index: 1rem;
 }
 
+.productImage {
+  height: 8.4rem;
+  width: auto;
+  margin-top: 1rem;
+}
+
 .deviceInfo {
   position: absolute;
   display: flex;

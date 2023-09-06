@@ -1,5 +1,14 @@
+.deviceDetails {
+  position: absolute;
+  width: 100%;
+  align-self: center;
+  top: 8rem;
+  left: 0;
+}
+
 .detailActions {
   width: 100%;
+  padding: 0 2rem;
   font-family: var(--main-font);
 }
 
@@ -17,7 +26,7 @@
   width: 100%;
 }
 
-.deviceImg {
+.deviceDetailsImg {
   border-radius: .5rem;
   background-color: var(--neutral-01);
   width: 275px;
@@ -26,4 +35,14 @@
 
 .deviceDetailsDisplay {
   flex-grow: 1;
+}
+
+.deviceDetailsDisplay h3 {
+  font-size: 2rem;
+  color: var(--unifi-text-01);
+}
+
+.deviceDetailsDisplay p {
+  font-size: 1.4rem;
+  color: var(--unifi-text-02);
 }
