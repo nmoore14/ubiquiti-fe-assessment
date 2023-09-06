@@ -8,6 +8,7 @@ import SearchBar from '../components/tables/elements/SearchBar'
 import ActionButtonGroup from '../components/tables/elements/ActionButtonGroup'
 import FilterDropdown from '../components/details/FilterDropdown'
 import DeviceTable from '../components/tables/DeviceTable'
+import DeviceGrid from '../components/grid/DeviceGrid'
 
 export default function Devices() {
   const [deviceFilter, setDeviceFilter] = React.useState<string[]>([])
@@ -68,6 +69,10 @@ export default function Devices() {
       </div>
       { showList &&
         <DeviceTable devices={ deviceDisplay } />
+      }
+
+      { !showList &&
+        <DeviceGrid devices={ deviceDisplay } />
       }
     </div>
   )

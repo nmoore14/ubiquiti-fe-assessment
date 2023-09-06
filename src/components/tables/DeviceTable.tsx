@@ -9,10 +9,6 @@ interface DeviceTableProps {
 const DeviceTable:React.FC<DeviceTableProps> = ({ devices }) => {
   const navigate = useNavigate()
 
-  const handleClick = () => {
-    console.log('Button clicked')
-  }
-
   const handleProductDetails = (deviceId:string) => {
     navigate(`/details/${deviceId}`)
   }

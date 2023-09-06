@@ -61,6 +61,10 @@ tbody > tr:hover {
   background-color: var(--neutral-03);
 }
 
+tbody > tr:active {
+  border-bottom: 2px solid var(--unifi-blue);
+}
+
 .iconCol {
   width: 50px;
 }
@@ -82,4 +86,3 @@ tbody > tr:hover {
   font-size: 1.4rem;
   color: var(--unifi-text-02);
 }
-

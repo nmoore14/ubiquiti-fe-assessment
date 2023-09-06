@@ -1,4 +1,8 @@
 .btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: var(--main-font);
   border-radius: .13rem;
   border: none;
@@ -20,6 +24,10 @@
 
 .btnWarning {
   color: red;
+}
+
+.btnActive {
+  background-color: var(--neutral-02);
 }
 
 .btnActive > svg {
