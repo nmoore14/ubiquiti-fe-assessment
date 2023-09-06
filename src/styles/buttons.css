@@ -13,6 +13,7 @@
 }
 
 .btnGhost {
+  padding: .5rem .75rem;
   color: var(--neutral-08);
   background-color: var(--neutral-00);
 }
@@ -21,8 +22,8 @@
   color: red;
 }
 
-.btnActive {
-  color: var(--unifi-blue);
+.btnActive > svg {
+  stroke: var(--unifi-blue);
 }
 
 /* Back Button */

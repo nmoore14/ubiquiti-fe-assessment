@@ -6,11 +6,13 @@ import { IDevices } from './types'
 interface DeviceState {
   devices: IDevices
   selectedDevice: string,
+  displayList: boolean,
 }
 
 const initialState: DeviceState = {
   devices: [],
   selectedDevice: '',
+  displayList: true,
 }
 
 const deviceSlice = createSlice({
@@ -22,11 +24,14 @@ const deviceSlice = createSlice({
     },
     setSelectedDevice(state, action:PayloadAction<string>) {
       state.selectedDevice = action.payload
-    }
+    },
+    toggleDeviceView(state, action:PayloadAction<boolean>) {
+      state.displayList = action.payload
+    },
   },
 })
 
-export const { fetchDevicesSuccess, setSelectedDevice } = deviceSlice.actions
+export const { fetchDevicesSuccess, setSelectedDevice, toggleDeviceView } = deviceSlice.actions
 
 export const selectDeviceById = (deviceId: string) => (state: RootState) =>
   state.devices.devices.find((device) => device.id === deviceId);
