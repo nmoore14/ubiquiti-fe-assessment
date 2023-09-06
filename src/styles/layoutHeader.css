@@ -6,7 +6,7 @@
   padding: 1rem 2rem;
   background-color: var(--neutral-02);
   color: var(--unifi-text-03);
-  z-index: 900;
+  z-index: 100;
 }
 
 .layoutHeader > .pageDetails > img {
