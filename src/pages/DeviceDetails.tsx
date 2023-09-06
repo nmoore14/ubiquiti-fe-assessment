@@ -2,32 +2,55 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DeviceParams } from '../types'
-import { RootState, useAppDispatch, setSelectedDevice, selectDeviceById } from '../store'
+import {
+  RootState,
+  useAppDispatch,
+  setSelectedDevice,
+  selectDeviceById,
+  selectDeviceIndexById,
+  selectDeviceIdByIndex,
+  getDevicesLength
+} from '../store'
 import NavButtons from '../components/details/NavButtons'
 import leftArrow from '../assets/icons/left-arrow.svg'
 
 export default function DeviceDetails() {
   const [showJson, setShowJson] = React.useState(false)
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const currentDevice = useSelector((state: RootState) => state.devices.selectedDevice);
-
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const devicesLength =  useSelector(getDevicesLength())
+  const currentDevice = useSelector((state: RootState) => state.devices.selectedDevice)
+  const selectedDeviceIndex = useSelector(selectDeviceIndexById(currentDevice))
+  const selectedDevice = useSelector(selectDeviceById(currentDevice))
   const { id } = useParams<DeviceParams>()
 
   if (id) {
-    dispatch(setSelectedDevice(id));
+    dispatch(setSelectedDevice(id))
   }
 
-  const selectedDevice = useSelector(selectDeviceById(currentDevice));
-  console.log(selectedDevice)
+  const previousIndex = selectedDeviceIndex === 0 ? devicesLength - 1 : selectedDeviceIndex - 1
+  let previousDeviceId:string = ''
+  if (previousIndex >= 0) {
+    previousDeviceId = useSelector(selectDeviceIdByIndex(previousIndex))
+  }
+
+  const nextIndex = selectedDeviceIndex === devicesLength - 1 ? 0 : selectedDeviceIndex + 1
+  let nextDeviceId:string = ''
+  if (nextIndex < devicesLength) {
+    nextDeviceId = useSelector(selectDeviceIdByIndex(nextIndex))
+  }
 
   const prevDevice = () => {
-    console.log('Previous Device')
-  }
+    if (previousIndex >= 0) {
+      navigate(`/details/${previousDeviceId}`)
+    }
+  };
 
   const nextDevice = () => {
-    console.log('Next Device')
-  }
+    if (nextIndex < devicesLength) {
+      navigate(`/details/${nextDeviceId}`)
+    }
+  };
 
   const toggleJson = () => {
     setShowJson(!showJson)

@@ -1,10 +1,10 @@
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import thunk from 'redux-thunk'
-import { IDevices } from './types'
+import { IDevice, IDevices } from './types'
 
 interface DeviceState {
-  devices: IDevices
+  devices: IDevice[],
   selectedDevice: string,
   displayList: boolean,
 }
@@ -34,7 +34,17 @@ const deviceSlice = createSlice({
 export const { fetchDevicesSuccess, setSelectedDevice, toggleDeviceView } = deviceSlice.actions
 
 export const selectDeviceById = (deviceId: string) => (state: RootState) =>
-  state.devices.devices.find((device) => device.id === deviceId);
+  state.devices.devices.find((device) => device.id === deviceId)
+
+export const selectDeviceIndexById = (deviceId: string) => (state: RootState) =>
+  state.devices.devices.findIndex((device) => device.id === deviceId)
+
+export const selectDeviceIdByIndex = (deviceIndex: number) => (state: RootState) =>
+  state.devices.devices[deviceIndex].id
+
+export const getDevicesLength = () => (state: RootState) =>
+  state.devices.devices.length
+
 
 const store = configureStore({
   reducer: {
