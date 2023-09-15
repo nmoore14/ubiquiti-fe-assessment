@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
 
 @import './styles/layout.css';
-@import './styles/layoutHeader.css';
-@import './styles/table.css';
-@import './styles/grid.css';
-@import './styles/inputs.css';
-@import './styles/buttons.css';
-@import './styles/dropdowns.css';
-@import './styles/cards.css';
+@import './components/headers/layoutHeader.css';
+@import './components/tables/table.css';
+@import './components/grid/grid.css';
+@import './components/inputs/inputs.css';
+@import './components/buttons/buttons.css';
+@import './components/dropdowns/dropdowns.css';
+@import './components/cards/cards.css';
 
 /* Page specific CSS imports */
-@import './styles/pages/deviceDetails.css';
+@import './pages/deviceDetails.css';
 
 :root {
   --gray-4: #BDBDBD;

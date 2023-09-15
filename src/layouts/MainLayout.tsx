@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { Outlet } from 'react-router-dom'
 import { useAppDispatch, fetchDevicesSuccess } from '../store'
 
-import LayoutHeader from '../components/LayoutHeader'
+import LayoutHeader from '../components/headers/LayoutHeader'
 
 interface MainLayoutProps {
   children?: ReactNode;

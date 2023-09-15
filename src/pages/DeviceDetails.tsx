@@ -11,7 +11,7 @@ import {
   selectDeviceIdByIndex,
   getDevicesLength
 } from '../store'
-import NavButtons from '../components/details/NavButtons'
+import NavButtons from '../components/buttons/NavButtons'
 import leftArrow from '../assets/icons/left-arrow.svg'
 
 export default function DeviceDetails() {

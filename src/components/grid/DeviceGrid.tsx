@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { IDevice } from '../../types'
-import DeviceCard from './elements/DeviceCard'
+import DeviceCard from '../cards/DeviceCard';
 
 interface DeviceGridProps {
   devices: IDevice[];
