@@ -1,4 +1,4 @@
-import { IDevice, IDevices } from "../types"
+import { IDevice, IDevices, Radio } from "../types"
 
 interface SearchItem {
   id: string;
@@ -12,14 +12,16 @@ interface SearchItem {
  * @param { IDevices } array - Array of devices
  * @returns { String[] } - String array of unique product lines
  */
-export function getUniqueProductLine(array: IDevices): IDevice[keyof IDevice][] {
+export function getUniqueProductLine(array: IDevices): string[] {
   const uniqueValues: Set<IDevice[keyof IDevice]> = new Set();
 
   for (const item of array) {
     uniqueValues.add(item.line.name);
   }
 
-  return Array.from(uniqueValues);
+  const values: string[] = Array.from(uniqueValues) as string[]
+
+  return values
 }
 
 /**
@@ -37,9 +39,6 @@ export function filterDevices(devices: IDevice[], filters: Array<String>): IDevi
 }
 
 /**
- * Function to return an array of just the product name and the shortname
- */
-/**
  * @description Generate a list of products for search autocomplete
  * @param { IDevices } devices - Array of devices
  * @returns { SearchItem[] } - Array of SearchItem objects
@@ -55,4 +54,22 @@ export function getProductNameList(devices: IDevice[]): SearchItem[] {
   })
 
   return searchItems
+}
+
+/**
+ * @description Get the value of the key of the radio object that is passed
+ * @param { Radio[] } radios - Array of Radio
+ * @param { String } key - String to get the value at
+ * @returns String, Number, or empty
+ */
+export function getRadioKeyValue(radios:Radio[], key:string): String | Number {
+  for (const radioItem in radios) {
+    let radio:Radio = radios[radioItem]
+    for (const item in radio) {
+      if (item === key) {
+        return radio[item as keyof typeof radio]
+      }
+    }
+  }
+  return ''
 }

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect } from 'react';
-import { ISearchItem } from '../../../types';
+import { ISearchItem } from '../../types';
 
 interface SearchBarProps {
   searchItems: ISearchItem[]; // Define the prop for custom search items

@@ -43,7 +43,7 @@ export default function Devices() {
     setDeviceFilter([])
   }
 
-  const productLines = getUniqueProductLine(devices)
+  const productLines:string[] = getUniqueProductLine(devices)
   const searchItems:ISearchItem[] = getProductNameList(devices)
 
   React.useEffect(() => {
@@ -64,7 +64,7 @@ export default function Devices() {
         </div>
         <div className='flex flex-row nowrap justify-center items-center actions'>
           <ActionButtonGroup showDeviceList={ showList } onViewToggle={ changeDeviceView }/>
-          <FilterDropdown items={ productLines } type='checkbox' onSelect={ handleDeviceFilter } onClickReset={ resetFilters } />
+          <FilterDropdown items={ productLines as string[] } type='checkbox' onSelect={ handleDeviceFilter } onClickReset={ resetFilters } />
         </div>
       </div>
       { showList &&
