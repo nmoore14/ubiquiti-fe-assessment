@@ -26,27 +26,29 @@ export default function DeviceDetails() {
   const selectedDevice = useSelector(selectDeviceById(currentDevice))
   const { id } = useParams<DeviceParams>()
 
-  React.useEffect(() => {
-    if (navigateId !== '') {
-      navigate(`/details/${navigateId}`)
-    }
-  }, [navigateId])
+  const previousIndex = selectedDeviceIndex === 0 ? devicesLength - 1 : selectedDeviceIndex - 1
+  let previousDeviceId:string = ''
+
+  const nextIndex = selectedDeviceIndex === devicesLength - 1 ? 0 : selectedDeviceIndex + 1
+  let nextDeviceId:string = ''
+
+  if (previousIndex >= 0 && devicesLength) {
+    previousDeviceId = useSelector(selectDeviceIdByIndex(previousIndex))
+  }
+
+  if (nextIndex < devicesLength && devicesLength) {
+    nextDeviceId = useSelector(selectDeviceIdByIndex(nextIndex))
+  }
 
   if (id) {
     dispatch(setSelectedDevice(id))
   }
 
-  const previousIndex = selectedDeviceIndex === 0 ? devicesLength - 1 : selectedDeviceIndex - 1
-  let previousDeviceId:string = ''
-  if (previousIndex >= 0) {
-    previousDeviceId = useSelector(selectDeviceIdByIndex(previousIndex))
-  }
-
-  const nextIndex = selectedDeviceIndex === devicesLength - 1 ? 0 : selectedDeviceIndex + 1
-  let nextDeviceId:string = ''
-  if (nextIndex < devicesLength) {
-    nextDeviceId = useSelector(selectDeviceIdByIndex(nextIndex))
-  }
+  React.useEffect(() => {
+    if (navigateId !== '' && devicesLength) {
+      navigate(`/details/${navigateId}`)
+    }
+  }, [navigateId])
 
   const prevDevice = () => {
     if (previousIndex >= 0) {
@@ -108,10 +110,15 @@ export default function DeviceDetails() {
           </button>
         </div>
         <div className='actionsRight'>
-          <NavButtons onClickButton1={ prevDevice } onClickButton2={ nextDevice } />
+          { selectedDevice && <NavButtons onClickButton1={ prevDevice } onClickButton2={ nextDevice } /> }
         </div>
       </div>
-      { selectedDevice &&
+      { !devicesLength && (
+        <div>
+          <h1>No Products</h1>
+        </div>
+      )}
+      { selectedDevice && devicesLength && (
         <div className='details'>
           <div className='device'>
             <div className='flex flex-col nowrap justify-center items-center deviceDetailsImg'>
@@ -156,7 +163,7 @@ export default function DeviceDetails() {
             </div>
           </div>
         </div>
-      }
+      )}
       <div className='deviceDetailsExtra'>
         <button
           className='btn btnGhostPrimary'
