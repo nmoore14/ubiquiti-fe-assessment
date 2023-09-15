@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-interface FilterDropdownProps<T> {
-  items: T[];
+interface FilterDropdownProps {
+  items: string[];
   type: 'checkbox' | 'dropdown' | 'select';
   onSelect: (selectedItem: string) => void;
   onClickReset: () => void;
 }
 
-function FilterDropdown<String>({ items, type, onSelect, onClickReset }: FilterDropdownProps<String>): JSX.Element {
+export default function FilterDropdown({ items, type, onSelect, onClickReset }: FilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -19,8 +19,10 @@ function FilterDropdown<String>({ items, type, onSelect, onClickReset }: FilterD
       key={index}
       className='flex flex-row nowrap justify-start items-center productLineItem'
     >
-      <input type='checkbox' value={item} onChange={ () => onSelect(item) }/>
-      <label>{item}</label>
+      <label className='flex flex-row nowrap justify-start items-center'>
+        <input type='checkbox' value={item} name={`${item}-checkbox`} onChange={ () => onSelect(item) }/>
+        {item}
+      </label>
     </div>
   ))
 
@@ -47,5 +49,3 @@ function FilterDropdown<String>({ items, type, onSelect, onClickReset }: FilterD
     </div>
   );
 }
-
-export default FilterDropdown;
