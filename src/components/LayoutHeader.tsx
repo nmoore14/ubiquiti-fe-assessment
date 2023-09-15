@@ -1,4 +1,3 @@
-import * as React from 'react'
 import ubiDefaultIcon from '../assets/ubi-default-icon.svg'
 
 interface LayoutHeaderProps {
@@ -6,7 +5,7 @@ interface LayoutHeaderProps {
   authorName: string,
 }
 
-const LayoutHeader: React.FC<LayoutHeaderProps> = ({ pageTitle, authorName }) => {
+export default function LayoutHeader({ pageTitle, authorName }: LayoutHeaderProps) {
   return (
     <div className="fixed layoutHeader">
       <div className="flex flex-row nowrap justify-center items-center pageDetails">
@@ -19,5 +18,3 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({ pageTitle, authorName }) =>
     </div>
   )
 }
-
-export default LayoutHeader

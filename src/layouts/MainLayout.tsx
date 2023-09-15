@@ -1,6 +1,5 @@
-import * as React from 'react'
-import type { FC, ReactNode } from 'react'
-import PropTypes from 'prop-types'
+import { useEffect } from 'react'
+import type { ReactNode } from 'react'
 import { Outlet } from 'react-router-dom'
 import { useAppDispatch, fetchDevicesSuccess } from '../store'
 
@@ -10,12 +9,12 @@ interface MainLayoutProps {
   children?: ReactNode;
 }
 
-const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+export default function MainLayout({ children }: MainLayoutProps) {
   const dispatch = useAppDispatch();
 
   // This is going to live here for the time being
   // Once implemented into a large app, this can be added to the global store
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("https://static.ui.com/fingerprint/ui/public.json")
       .then((response) => response.json())
       .then((data) => {
@@ -33,9 +32,3 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     </div>
   )
 };
-
-MainLayout.propTypes = {
-  children: PropTypes.node,
-};
-
-export default MainLayout;

@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { IDevice } from '../../../types'
 
 interface DeviceCardProps {
@@ -7,7 +6,7 @@ interface DeviceCardProps {
   deviceDetails: (id:string) => void;
 }
 
-const DeviceCard:React.FC<DeviceCardProps> = ({ device, deviceIndex, deviceDetails }) => {
+export default function DeviceCard({ device, deviceIndex, deviceDetails }: DeviceCardProps) {
   return (
     <div className='deviceCard' key={ deviceIndex } onClick={ () => deviceDetails(device.id) }>
       <div className='deviceLineTag'>
@@ -28,5 +27,3 @@ const DeviceCard:React.FC<DeviceCardProps> = ({ device, deviceIndex, deviceDetai
   )
 
 }
-
-export default DeviceCard

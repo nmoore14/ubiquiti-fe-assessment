@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { ISearchItem } from '../../../types';
 
 interface SearchBarProps {
@@ -6,7 +6,7 @@ interface SearchBarProps {
   searchSelect: (deviceId:string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ searchItems, searchSelect }) => {
+export default function SearchBar({ searchItems, searchSelect }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setSearchResults] = useState<ISearchItem[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -86,6 +86,3 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchItems, searchSelect }) => {
     </div>
   );
 };
-
-export default SearchBar;
-

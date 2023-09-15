@@ -1,11 +1,9 @@
-import React from 'react';
-
 interface ActionButtonGroupProps {
   showDeviceList: boolean;
   onViewToggle: (showList:boolean) => void;
 }
 
-const ActionButtonGroup: React.FC<ActionButtonGroupProps> = ({showDeviceList, onViewToggle}) => {
+export default function ActionButtonGroup({showDeviceList, onViewToggle}: ActionButtonGroupProps) {
   return (
     <div className='flex flex-row nowrap justify-center items-center'>
       <button className={ showDeviceList ? 'btn btnGhost btnActive' : 'btn btnGhost' } onClick={ () => onViewToggle(true) }>
@@ -24,5 +22,3 @@ const ActionButtonGroup: React.FC<ActionButtonGroupProps> = ({showDeviceList, on
     </div>
   );
 };
-
-export default ActionButtonGroup;

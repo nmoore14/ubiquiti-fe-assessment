@@ -1,11 +1,9 @@
-import React from 'react'
-
 interface NavButtonsProps {
   onClickButton1: () => void;
   onClickButton2: () => void;
 }
 
-const NavButtons: React.FC<NavButtonsProps> = ({ onClickButton1, onClickButton2 }) => {
+export default function NavButtons({ onClickButton1, onClickButton2 }: NavButtonsProps) {
   return (
     <div className='flex flex-row nowrap justify-center items-center'>
       <button className='flex flex-row nowrap justify-center items-center btn btnPrimary' onClick={ onClickButton1 }>
@@ -21,5 +19,3 @@ const NavButtons: React.FC<NavButtonsProps> = ({ onClickButton1, onClickButton2 
     </div>
   );
 };
-
-export default NavButtons;

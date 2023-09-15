@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IDevice } from '../../types'
 
@@ -6,7 +5,7 @@ interface DeviceTableProps {
   devices: IDevice[];
 }
 
-const DeviceTable:React.FC<DeviceTableProps> = ({ devices }) => {
+export default function DeviceTable({ devices }: DeviceTableProps) {
   const navigate = useNavigate()
 
   const handleProductDetails = (deviceId:string) => {
@@ -42,5 +41,3 @@ const DeviceTable:React.FC<DeviceTableProps> = ({ devices }) => {
       </div>
   )
 }
-
-export default DeviceTable
