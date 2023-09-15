@@ -1,4 +1,4 @@
-import ubiDefaultIcon from '../assets/ubi-default-icon.svg'
+import ubiDefaultIcon from '../../assets/ubi-default-icon.svg'
 
 interface LayoutHeaderProps {
   pageTitle: string,
