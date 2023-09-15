@@ -57,3 +57,18 @@
   cursor: pointer;
   background-color: var(--neutral-02);
 }
+
+@media (max-width: 720px) {
+  .dropdown {
+    right: 2.5rem;
+  }
+
+  .searchDropdown {
+    width: 95%;
+    left: 1rem;
+  }
+
+  .searchTermShortName {
+    display: none;
+  }
+}

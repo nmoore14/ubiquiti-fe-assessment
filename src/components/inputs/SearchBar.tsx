@@ -51,7 +51,7 @@ export default function SearchBar({ searchItems, searchSelect }: SearchBarProps)
   };
 
   return (
-    <div className="search-bar">
+    <div className="searchBar">
       <input
         type="text"
         placeholder="Search"

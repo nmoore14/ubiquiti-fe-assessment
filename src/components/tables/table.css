@@ -103,3 +103,34 @@ tbody > tr:active {
   text-align: right;
   color: var(--unifi-text-02);
 }
+
+@media (max-width: 720px) {
+  .deviceActions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    box-shadow: 0 .3rem 1rem rgba(0, 0, 0, 5%);
+  }
+
+  .deviceSearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .deviceSearch > .muted {
+    margin-left: .25rem;
+  }
+
+  .actions {
+    margin-top: .5rem;
+  }
+
+  .devicesTable {
+    margin-top: 13rem;
+  }
+}

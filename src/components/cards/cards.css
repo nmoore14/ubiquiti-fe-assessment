@@ -81,3 +81,33 @@
 .deviceCard:hover > .deviceInfo {
   background-color: var(--neutral-01);
 }
+
+@media (max-width: 720px) {
+  .deviceCard {
+    width: 90%;
+    height: 30rem;
+  }
+
+  .deviceLineTag {
+    padding-top: .75rem;
+    padding-right: 1rem;
+  }
+  .tag {
+    font-size: 2rem;
+  }
+
+  .productImage {
+    height: 20rem;
+    width: auto;
+  }
+
+  .deviceInfo h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .deviceInfo .muted {
+    width: 100%;
+    text-align: center;
+  }
+}

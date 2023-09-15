@@ -112,7 +112,7 @@ export default function DeviceDetails() {
         </div>
       </div>
       { selectedDevice &&
-        <div className='flex flex-row justify-between items-center details'>
+        <div className='details'>
           <div className='device'>
             <div className='flex flex-col nowrap justify-center items-center deviceDetailsImg'>
               { getLargestIcon(selectedDevice) }

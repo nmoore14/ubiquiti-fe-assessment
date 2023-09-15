@@ -57,7 +57,7 @@ export default function Devices() {
 
   return (
     <div className='flex flex-col nowrap devices'>
-      <div className='fixed flex flex-row nowrap justify-between deviceActions'>
+      <div className='fixed flex flex-row wrap justify-between deviceActions'>
         <div className='flex flex-row nowrap items-center deviceSearch'>
           <SearchBar searchItems={ searchItems } searchSelect={ handleProductDetails }/>
           <span className='muted'> { Object.keys(deviceDisplay).length } devices </span>
