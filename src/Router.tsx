@@ -1,17 +1,17 @@
-import type { RouteObject } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 
 import MainLayout from './layouts/MainLayout';
 import Devices from './pages/Devices';
 import DeviceDetails from './pages/DeviceDetails';
 
 
-const Router: RouteObject[] = [
+const Router = createHashRouter([
   {
     path: '/',
     element: <MainLayout />,
     children: [
       {
-        index: true,
+        path: "",
         element: <Devices />,
       },
       {
@@ -20,6 +20,6 @@ const Router: RouteObject[] = [
       },
     ],
   },
-];
+])
 
 export default Router;

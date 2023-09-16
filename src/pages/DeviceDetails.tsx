@@ -5,6 +5,7 @@ import { DeviceParams, IDevice, Icon, Radio } from '../types'
 import {
   RootState,
   useAppDispatch,
+  fetchDevicesSuccess,
   setSelectedDevice,
   selectDeviceById,
   selectDeviceIndexById,
@@ -33,10 +34,18 @@ export default function DeviceDetails() {
   })
 
   React.useEffect(() => {
+    if (!devicesLength) {
+      fetch("https://static.ui.com/fingerprint/ui/public.json")
+        .then((response) => response.json())
+        .then((data) => {
+          dispatch(fetchDevicesSuccess(data.devices));
+        })
+      .catch((error) => console.log(error));
+    }
     if (navigateId !== '' && devicesLength) {
       navigate(`/details/${navigateId}`)
     }
-  }, [navigateId])
+  }, [navigateId, dispatch])
 
 
   const nextDevice = () => {
