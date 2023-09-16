@@ -8,8 +8,8 @@ import {
   setSelectedDevice,
   selectDeviceById,
   selectDeviceIndexById,
-  selectDeviceIdByIndex,
-  getDevicesLength
+  getDevicesLength,
+  getDeviceIdByIndex
 } from '../store'
 import { getRadioKeyValue } from '../utils/DeviceFilters'
 import NavButtons from '../components/buttons/NavButtons'
@@ -24,25 +24,13 @@ export default function DeviceDetails() {
   const currentDevice = useSelector((state: RootState) => state.devices.selectedDevice)
   const selectedDeviceIndex = useSelector(selectDeviceIndexById(currentDevice))
   const selectedDevice = useSelector(selectDeviceById(currentDevice))
+  const nextDeviceId = useSelector(getDeviceIdByIndex(selectedDeviceIndex + 1))
+  const prevDeviceId = useSelector(getDeviceIdByIndex(selectedDeviceIndex - 1))
   const { id } = useParams<DeviceParams>()
 
-  const previousIndex = selectedDeviceIndex === 0 ? devicesLength - 1 : selectedDeviceIndex - 1
-  let previousDeviceId:string = ''
-
-  const nextIndex = selectedDeviceIndex === devicesLength - 1 ? 0 : selectedDeviceIndex + 1
-  let nextDeviceId:string = ''
-
-  if (previousIndex >= 0 && devicesLength) {
-    previousDeviceId = useSelector(selectDeviceIdByIndex(previousIndex))
-  }
-
-  if (nextIndex < devicesLength && devicesLength) {
-    nextDeviceId = useSelector(selectDeviceIdByIndex(nextIndex))
-  }
-
-  if (id) {
-    dispatch(setSelectedDevice(id))
-  }
+  React.useEffect(() => {
+    dispatch(setSelectedDevice(id as string))
+  })
 
   React.useEffect(() => {
     if (navigateId !== '' && devicesLength) {
@@ -50,17 +38,14 @@ export default function DeviceDetails() {
     }
   }, [navigateId])
 
-  const prevDevice = () => {
-    if (previousIndex >= 0) {
-      setNavigateId(previousDeviceId)
-    }
-  };
 
   const nextDevice = () => {
-    if (nextIndex < devicesLength) {
-      setNavigateId(nextDeviceId)
-    }
-  };
+    setNavigateId(nextDeviceId)
+  }
+
+  const prevDevice = () => {
+    setNavigateId(prevDeviceId)
+  }
 
   const toggleJson = () => {
     setShowJson(!showJson)

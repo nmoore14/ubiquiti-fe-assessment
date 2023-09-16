@@ -9,6 +9,7 @@ interface DeviceState {
   displayList: boolean,
 }
 
+
 const initialState: DeviceState = {
   devices: [],
   selectedDevice: '',
@@ -39,12 +40,24 @@ export const selectDeviceById = (deviceId: string) => (state: RootState) =>
 export const selectDeviceIndexById = (deviceId: string) => (state: RootState) =>
   state.devices.devices.findIndex((device) => device.id === deviceId)
 
-export const selectDeviceIdByIndex = (deviceIndex: number) => (state: RootState) =>
-  state.devices.devices[deviceIndex].id
-
 export const getDevicesLength = () => (state: RootState) =>
   state.devices.devices.length
 
+export const getDeviceIdByIndex = (deviceIndex:number) => (state: RootState) => {
+  if (!state.devices.devices.length) {
+    return ''
+  }
+
+  if (deviceIndex < 0) {
+    deviceIndex = state.devices.devices.length - 1
+  }
+
+  if (deviceIndex > state.devices.devices.length - 1) {
+    deviceIndex = 0;
+  }
+
+  return state.devices.devices[deviceIndex].id
+}
 
 const store = configureStore({
   reducer: {
